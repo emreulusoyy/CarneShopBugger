@@ -1,0 +1,503 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/NewLayout.cshtml";
+}
+<style>
+/* Process Sections */
+        .process-section {
+            padding: 80px 0;
+            position: relative;
+        }
+
+        .process-section:nth-child(odd) {
+            background: #fff;
+        }
+
+        .process-section:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-number {
+            display: inline-block;
+            background: linear-gradient(135deg, #c41e3a, #e74c3c);
+            color: #fff;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            font-size: 32px;
+            font-weight: 700;
+            line-height: 80px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(196, 30, 58, 0.3);
+        }
+
+        .section-title {
+            font-size: 36px;
+            color: #333;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .section-description {
+            font-size: 18px;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        .media-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .media-item {
+            background: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 1px solid #eee;
+        }
+
+        .media-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+
+        .media-placeholder {
+            height: 250px;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 48px;
+            position: relative;
+        }
+
+        .video-placeholder {
+            background: linear-gradient(135deg, #e9ecef, #dee2e6);
+            position: relative;
+        }
+
+        .video-placeholder::after {
+            content: '▶';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 60px;
+            color: #c41e3a;
+            opacity: 0.8;
+        }
+
+        .media-caption {
+            padding: 25px 20px;
+            text-align: center;
+        }
+
+        .media-caption h4 {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .media-caption p {
+            color: #666;
+            font-size: 14px;
+            margin: 0;
+        }
+
+        /* Responsive */
+@@media (max-width: 768px) {
+            .section-title {
+                font-size: 28px;
+            }
+
+            .section-description {
+                font-size: 16px;
+            }
+
+            .media-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+</style>
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Process Sections</title>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Rubik', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .auto-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Process Sections */
+        .process-section {
+            padding: 80px 0;
+            position: relative;
+        }
+
+            .process-section:nth-child(odd) {
+                background: #fff;
+            }
+
+            .process-section:nth-child(even) {
+                background: #f8f9fa;
+            }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-number {
+            display: inline-block;
+            background: linear-gradient(135deg, #c41e3a, #e74c3c);
+            color: #fff;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            font-size: 32px;
+            font-weight: 700;
+            line-height: 80px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(196, 30, 58, 0.3);
+        }
+
+        .section-title {
+            font-size: 36px;
+            color: #333;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .section-description {
+            font-size: 18px;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        .media-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .media-item {
+            background: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 1px solid #eee;
+        }
+
+            .media-item:hover {
+                transform: translateY(-10px);
+                box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            }
+
+        .media-placeholder {
+            height: 250px;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 48px;
+            position: relative;
+            overflow: hidden;
+        }
+
+            /* Fotoğraf stilleri */
+            .media-placeholder img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: center;
+                transition: transform 0.3s ease;
+            }
+
+        .media-item:hover .media-placeholder img {
+            transform: scale(1.1);
+        }
+
+        /* Fotoğraf yüklenene kadar gösterilecek placeholder */
+        .photo-placeholder {
+            background: linear-gradient(135deg, #f1f3f4, #e8eaed);
+            border: 2px dashed #c1c7cd;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-size: 14px;
+            color: #5f6368;
+        }
+
+            .photo-placeholder .icon {
+                font-size: 40px;
+                margin-bottom: 10px;
+            }
+
+        .video-placeholder {
+            background: linear-gradient(135deg, #e9ecef, #dee2e6);
+            position: relative;
+        }
+
+            .video-placeholder::after {
+                content: '▶';
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                font-size: 60px;
+                color: #c41e3a;
+                opacity: 0.8;
+                z-index: 2;
+            }
+
+        .media-caption {
+            padding: 25px 20px;
+            text-align: center;
+        }
+
+            .media-caption h4 {
+                font-size: 18px;
+                color: #333;
+                margin-bottom: 8px;
+                font-weight: 600;
+            }
+
+            .media-caption p {
+                color: #666;
+                font-size: 14px;
+                margin: 0;
+            }
+
+        /* Responsive */
+        @@media (max-width: 768px) {
+            .section-title
+
+        {
+            font-size: 28px;
+        }
+
+        .section-description {
+            font-size: 16px;
+        }
+
+        .media-grid {
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        }
+    </style>
+</head>
+<body>
+    <!-- Process Section 1 -->
+    <section class="process-section">
+        <div class="auto-container">
+            <div class="section-header">
+                <div class="section-number">1</div>
+                <h2 class="section-title">Çiftliğimizde Üretim</h2>
+                <p class="section-description">
+                    Ürünlerimiz, modern teknoloji ile geleneksel yöntemlerin buluştuğu çiftliğimizde üretilir.
+                    Hayvanlarımız geniş arazilerde, doğal yaşam koşullarında büyür ve gelişir.
+                    Veteriner hekim kontrolünde, hijyenik ortamda bakım yapılır.
+                </p>
+            </div>
+
+            <div class="media-grid">
+                <div class="media-item">
+                    <div class="media-placeholder">
+                        <!-- Fotoğrafınızı buraya ekleyin -->
+                        <img src="~/teslimat/ciftliktesisi.jpg" alt="Modern Çiftlik Tesisleri" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'photo-placeholder\'><div class=\'icon\'>📷</div><div>Fotoğraf Yüklenecek<br><small>ciftlik-tesisleri.jpg</small></div></div>';">
+                    </div>
+                    <div class="media-caption">
+                        <h4>Modern Çiftlik Tesisleri</h4>
+                        <p>Geniş arazilerde kurulu modern çiftlik tesislerimiz</p>
+                    </div>
+                </div>
+                <div class="media-item">
+                    <div class="media-placeholder">
+                        <img src="~/teslimat/bakim.jpg" alt="Hayvan Bakımı" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'photo-placeholder\'><div class=\'icon\'>📷</div><div>Fotoğraf Yüklenecek<br><small>hayvan-bakimi.jpg</small></div></div>';">
+                    </div>
+                    <div class="media-caption">
+                        <h4>Hayvan Bakımı</h4>
+                        <p>Profesyonel ekibimizle özenli hayvan bakımı</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section 2 -->
+    <section class="process-section">
+        <div class="auto-container">
+            <div class="section-header">
+                <div class="section-number">2</div>
+                <h2 class="section-title">Doğal Beslenme</h2>
+                <p class="section-description">
+                    Hayvanlarımız özenle seçilmiş, doğal ve kaliteli yemlerle beslenir.
+                    Hormon ve antibiyotik içermeyen, organik sertifikalı yemleri kullanıyoruz.
+                    Beslenme programları veteriner hekim eşliğinde düzenlenir.
+                </p>
+            </div>
+
+            <div class="media-grid">
+                <div class="media-item">
+                    <div class="media-placeholder">
+                        <img src="~/teslimat/besleme.png" alt="Organik Yemler" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'photo-placeholder\'><div class=\'icon\'>📷</div><div>Fotoğraf Yüklenecek<br><small>organik-yemler.jpg</small></div></div>';">
+                    </div>
+                    <div class="media-caption">
+                        <h4>Organik Yemler</h4>
+                        <p>Sertifikalı organik yem çeşitlerimiz</p>
+                    </div>
+                </div>
+                <div class="media-item">
+                    <div class="media-placeholder">
+                        <img src="~/teslimat/beslemes.jpg" alt="Beslenme Süreci" onerror="this.style.display='none';">
+                    </div>
+                    <div class="media-caption">
+                        <h4>Beslenme Süreci</h4>
+                        <p>Günlük beslenme rutinimizden görüntüler</p>
+                    </div>
+                </div>
+                <div class="media-item">
+                    <div class="media-placeholder">
+                        <img src="~/teslimat/yem.jpg" alt="Doğal Otlaklar" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'photo-placeholder\'><div class=\'icon\'>📷</div><div>Fotoğraf Yüklenecek<br><small>dogal-otlaklar.jpg</small></div></div>';">
+                    </div>
+                    <div class="media-caption">
+                        <h4>Doğal Otlaklar</h4>
+                        <p>Geniş ve yeşil otlak alanlarımız</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section 3 -->
+    <section class="process-section">
+        <div class="auto-container">
+            <div class="section-header">
+                <div class="section-number">3</div>
+                <h2 class="section-title">Entegre Kesim ve İşleme</h2>
+                <p class="section-description">
+                    Entegre tesisimizde, uluslararası hijyen standartlarına uygun olarak kesim işlemi gerçekleştirilir.
+                    Modern teknoloji ile hayvanlar karkas haline getirilerek, soğuk hava depolarında muhafaza edilir.
+                    Tüm süreç veteriner hekim gözetiminde yapılır.
+                </p>
+            </div>
+
+            <div class="media-grid">
+                <div class="media-item">
+                    <div class="media-placeholder">
+                        <img src="~/teslimat/tesis.jpg" alt="Modern Kesim Tesisi" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'photo-placeholder\'><div class=\'icon\'>📷</div><div>Fotoğraf Yüklenecek<br><small>kesim-tesisi.jpg</small></div></div>';">
+                    </div>
+                    <div class="media-caption">
+                        <h4>Modern Kesim Tesisi</h4>
+                        <p>Hijyenik ve modern kesim tesisimiz</p>
+                    </div>
+                </div>
+                <div class="media-item">
+                    <div class="media-placeholder">
+                        <img src="~/teslimat/isleme.jpg" alt="İşleme Süreci" onerror="this.style.display='none';">
+                    </div>
+                    <div class="media-caption">
+                        <h4>İşleme Süreci</h4>
+                        <p>Profesyonel işleme sürecimizden detaylar</p>
+                    </div>
+                </div>
+                <div class="media-item">
+                    <div class="media-placeholder">
+                        <img src="~/teslimat/sdepolama.png" alt="Soğuk Depolama" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'photo-placeholder\'><div class=\'icon\'>📷</div><div>Fotoğraf Yüklenecek<br><small>soguk-depolama.jpg</small></div></div>';">
+                    </div>
+                    <div class="media-caption">
+                        <h4>Soğuk Depolama</h4>
+                        <p>Modern soğuk hava depolama sistemimiz</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section 4 -->
+    <section class="process-section">
+        <div class="auto-container">
+            <div class="section-header">
+                <div class="section-number">4</div>
+                <h2 class="section-title">Araçlara Yükleme ve Toplu Satış</h2>
+                <p class="section-description">
+                    İşlenen ürünler, özel soğutmalı araçlara yüklenerek dağıtım merkezlerine gönderilir.
+                    Toplu satış işlemleri ile marketlere, restoranlara ve bireysel müşterilere ulaştırılır.
+                    Soğuk zincir hiç kırılmadan, taze olarak teslim edilir.
+                </p>
+            </div>
+
+            <div class="media-grid">
+                <div class="media-item">
+                    <div class="media-placeholder">
+                        <img src="~/teslimat/arac2.png" alt="Soğutmalı Araç Filosu" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'photo-placeholder\'><div class=\'icon\'>📷</div><div>Fotoğraf Yüklenecek<br><small>sogutmali-arac.jpg</small></div></div>';">
+                    </div>
+                    <div class="media-caption">
+                        <h4>Soğutmalı Araç Filosu</h4>
+                        <p>Modern soğutmalı taşıma araçlarımız</p>
+                    </div>
+                </div>
+                <div class="media-item">
+                    <div class="media-placeholder">
+                        <img src="~/teslimat/teslimatarac.png" alt="Teslimat Süreci" onerror="this.style.display='none';">
+                    </div>
+                    <div class="media-caption">
+                        <h4>Teslimat Süreci</h4>
+                        <p>Yükleme ve teslimat sürecimizden canlı görüntüler</p>
+                    </div>
+                </div>
+                <div class="media-item">
+                    <div class="media-placeholder">
+                        <img src="~/teslimat/ambalaj.png" alt="Ambalajlama" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'photo-placeholder\'><div class=\'icon\'>📷</div><div>Fotoğraf Yüklenecek<br><small>ambalajlama.jpg</small></div></div>';">
+                    </div>
+                    <div class="media-caption">
+                        <h4>Ambalajlama</h4>
+                        <p>Hijyenik ambalajlama ve etiketleme sistemi</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
